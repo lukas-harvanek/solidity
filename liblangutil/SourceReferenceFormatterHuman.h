@@ -26,6 +26,7 @@
 #include <sstream>
 #include <functional>
 #include <liblangutil/SourceReferenceExtractor.h>
+#include <liblangutil/SourceReferenceFormatter.h> // SourceReferenceFormatterBase
 
 namespace dev
 {
@@ -34,24 +35,19 @@ struct Exception; // forward
 
 namespace langutil
 {
-struct SourceLocation;
-class Scanner;
 
-class SourceReferenceFormatter
+struct SourceLocation;
+struct SourceReference;
+
+class SourceReferenceFormatterHuman: public SourceReferenceFormatter
 {
 public:
-	explicit SourceReferenceFormatter(std::ostream& _stream):
-		m_stream(_stream)
+	explicit SourceReferenceFormatterHuman(std::ostream& _stream):
+		SourceReferenceFormatter{_stream}
 	{}
 
-	virtual ~SourceReferenceFormatter() = default;
-
-	/// Prints source location if it is given.
-	virtual void printSourceLocation(SourceReference const& _ref);
-	virtual void printExceptionInformation(SourceReferenceExtractor::Message const& _msg);
-
-	virtual void printSourceLocation(SourceLocation const* _location);
-	virtual void printExceptionInformation(dev::Exception const& _error, std::string const& _category);
+	void printSourceLocation(SourceReference const& _ref) override;
+	void printExceptionInformation(dev::Exception const& _error, std::string const& _category) override;
 
 	static std::string formatExceptionInformation(
 		dev::Exception const& _exception,
@@ -60,16 +56,10 @@ public:
 	{
 		std::ostringstream errorOutput;
 
-		SourceReferenceFormatter formatter(errorOutput);
+		SourceReferenceFormatterHuman formatter(errorOutput);
 		formatter.printExceptionInformation(_exception, _name);
 		return errorOutput.str();
 	}
-
-protected:
-	/// Prints source name if location is given.
-	void printSourceName(SourceReference const& _ref);
-
-	std::ostream& m_stream;
 };
 
 }

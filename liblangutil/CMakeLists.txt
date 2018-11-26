@@ -7,6 +7,7 @@ set(sources
 	Scanner.cpp
 	SourceReferenceExtractor.cpp
 	SourceReferenceFormatter.cpp
+	SourceReferenceFormatterHuman.cpp
 	Token.cpp
 )
 
