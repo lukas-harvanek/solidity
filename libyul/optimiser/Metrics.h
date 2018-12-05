@@ -46,4 +46,24 @@ private:
 	size_t m_size = 0;
 };
 
+/**
+ * Very rough cost that takes the size and execution cost of code into account.
+ * The cost per AST element is one, except for literals where it is the byte size.
+ * Function calls cost 50;
+ */
+class CodeCost: public ASTWalker
+{
+public:
+	static size_t codeCost(Expression const& _expression);
+
+private:
+	void operator()(FunctionCall const& _funCall) override;
+	void operator()(Literal const& _literal) override;
+	void visit(Statement const& _statement) override;
+	void visit(Expression const& _expression) override;
+
+private:
+	size_t m_cost = 0;
+};
+
 }

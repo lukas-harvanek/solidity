@@ -26,16 +26,24 @@ namespace yul
 {
 
 /**
- * Optimisation stage that replaces variables by their most recently assigned expressions.
+ * Optimisation stage that replaces variables by their most recently assigned expressions,
+ * but only if they are used exactly once or if it is code of "cost" 1 and there are at
+ * most 5 references.
  *
  * Prerequisite: Disambiguator
  */
 class Rematerialiser: public DataFlowAnalyzer
 {
+public:
+	static void run(Block& _ast);
+
 protected:
+	Rematerialiser(Block& _ast);
+
 	using ASTModifier::visit;
 	void visit(Expression& _e) override;
 
+	std::map<YulString, size_t> m_referenceCounts;
 };
 
 }
