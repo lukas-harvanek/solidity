@@ -341,6 +341,9 @@ Json::Value StandardCompiler::compileInternal(Json::Value const& _input)
 
 	Json::Value const& settings = _input.get("settings", Json::Value());
 
+	if (!settings.isObject())
+		return formatFatalError("JSONError", "settings must be an object.");
+
 	if (settings.isMember("evmVersion"))
 	{
 		if (!settings["evmVersion"].isString())
