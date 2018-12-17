@@ -140,6 +140,7 @@ BOOST_AUTO_TEST_CASE(single_callvaluecheck_payable)
 	)";
 	compileAndRun(sourceCode);
 
+	/*
 	auto traceJSON = m_rpc.rpcCall("admin_eth_vmTrace", {
 		//"\"" + toHex(m_blockNumber, HexPrefix::Add) + "\"",
 		"\"1\"",
@@ -147,6 +148,7 @@ BOOST_AUTO_TEST_CASE(single_callvaluecheck_payable)
 		"\"EpQW1l69zvU=\""
 	});
 	cout << traceJSON["structLogs"] << endl;
+	*/
 
 	if (Options::get().evmVersion() <= EVMVersion::byzantium())
 		CHECK_GAS(257740, 122197, 0);
