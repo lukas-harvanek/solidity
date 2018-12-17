@@ -827,7 +827,7 @@ Array elements can be of any type, including mapping or struct. The general
 restrictions for types apply, in that mappings can only be stored in the
 storage data location and publicly-visible functions need parameters that are :ref:`ABI types <ABI>`.
 
-Accessing an array past its end causes a failing assertion, use the ``.push()``
+Accessing an array past its end causes a failing assertion. You can use the ``.push()`` method to append a new element at the end or assign to the ``.length`` :ref:`member <array-members>` to change the size (see below for caveats).
 method or increase the ``.length`` :ref:`member <array-members>` to add elements.
 
 Variables of type ``bytes`` and ``string`` are special arrays. A ``bytes`` is similar to ``byte[]``,
