@@ -811,7 +811,7 @@ An array of fixed size ``k`` and element type ``T`` is written as ``T[k]``,
 and an array of dynamic size as ``T[]``.
 
 For example, an array of 5 dynamic arrays of ``uint`` is written as
-``uint[][5]``. The notation is reversed compared to some other languages, as in
+``uint[][5]``. The notation is reversed compared to some other languages. In
 Solidity, ``X[3]`` is always an array containing three elements of type ``X``,
 even if ``X`` is itself an array. This is not the case in other languages such
 as C.
