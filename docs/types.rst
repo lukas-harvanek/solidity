@@ -837,7 +837,7 @@ length or index access.
 You should use ``bytes`` over ``byte[]`` because it is cheaper. As a general rule,
 use ``bytes`` for arbitrary-length raw byte data and ``string`` for arbitrary-length
 string (UTF-8) data. If you can limit the length to a certain number of bytes,
-always use one of ``bytes1`` to ``bytes32`` because they are much cheaper.
+always use one of the value types ``bytes1`` to ``bytes32`` because they are much cheaper.
 
 .. note::
     If you want to access the byte-representation of a string ``s``, use
