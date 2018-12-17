@@ -1125,57 +1125,6 @@ Of course, you can also directly access the members of the struct without
 assigning it to a local variable, as in
 ``campaigns[campaignID].amount = 0``.
 
-Types as input and output parameters
-====================================
-
-.. index:: !function parameters, functions, parameters
-
-Allowed function parameter types
---------------------------------
-
-**All** :ref:`value type <value-types>` variables are allowed as input and
-output function parameter types.
-
-**All** :ref:`reference type <reference-types>` variables are allowed as input
-and output function parameter types for internal functions, and for external
-functions if you enable the experimental ``ABIEncoderV2`` feature.
-
-:ref:`Mapping type <mapping-types>` variables **are not** allowed as input or output function types.
-
-.. index:: copying types, referencing types
-
-.. _ref-copy-types:
-
-Copying vs referencing
-----------------------
-
-When you use variables as an input or output parameter to functions, how the
-compiler treats the variable depends on its type.
-
-Any variable that is a :ref:`value-types`, has its value **copied** from the
-calling function to the called function.
-
-For variables that are more complex types (or :ref:`reference-types`), whether
-the variable is copied to or referenced to the calling function depends on the :ref:`storage location <data-location-assignment>` appended to the variable, in summary:
-
-- Variables appended with ``storage`` in the calling function and ``memory`` in the called function have their values **copied** between the functions.
-- Variables appended with ``storage`` in the calling function and ``storage`` in the called function have their values **referenced** between the functions.
-- Variables already stored in ``memory`` in the calling function and variables already stored in ``memory`` in the called function have their values **referenced** between the functions.
-
-When a complex variable is copied from an calling function to a called function
-the mapping of the target is ignored as there is no list of mapped keys and
-it's impossible to know which values to copy. For example::
-
-  struct User {
-      mapping(string => string) comments;
-  }
-
-  function somefunction public {
-     User user1;
-     user1.comments["Hello"] = "World";
-     User user2 = user1;
-  }
-
 .. index:: !mapping
 .. _mapping-types:
 
