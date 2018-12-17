@@ -773,7 +773,7 @@ Data locations are not only relevant for persistency of data, but also for the s
 
 * Assignments between ``storage`` and ``memory`` (or from calldata) always create an independent copy.
 * Assignments from ``memory`` to ``memory`` only create references. This means that changes to one memory variable are also visible in all other memory variables that refer to the same data.
-* Assignments from ``storage`` to a local storage variables also only assign a reference.
+* Assignments from ``storage`` to a local storage variable also only assign a reference.
 * All other assignments to storage always copy. Examples for this case are assignments to state variables or to members of local variables of storage struct type, even if the local variable itself is just a reference.
 
 ::
