@@ -819,7 +819,7 @@ as C.
 Indices are zero-based, and access is in the opposite direction of the
 declaration.
 For example to access the second ``uint`` in the third dynamic array, use
-``unit[2][1]``, and to access the third dynamic array, use ``unit[2]``. Again,
+``x[2][1]``, and to access the third dynamic array, use ``x[2]``. Again,
 if you have an array ``T[5] a`` for a type ``T`` that can also be an array,
 then ``a[2]`` always has type ``T``.
 
