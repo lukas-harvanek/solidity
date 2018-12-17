@@ -807,7 +807,7 @@ Arrays
 
 Arrays can have a compile-time fixed size, or they can have a dynamic size.
 
-An array of fixed size ``k`` and element type ``T`` is written as ``T[k]``,
+The type of an array of fixed size ``k`` and element type ``T`` is written as ``T[k]``,
 and an array of dynamic size as ``T[]``.
 
 For example, an array of 5 dynamic arrays of ``uint`` is written as
