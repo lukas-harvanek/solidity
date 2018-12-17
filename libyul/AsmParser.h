@@ -44,7 +44,7 @@ public:
 	/// Parses an inline assembly block starting with `{` and ending with `}`.
 	/// @param _reuseScanner if true, do check for end of input after the `}`.
 	/// @returns an empty shared pointer on error.
-	std::shared_ptr<Block> parse(std::shared_ptr<langutil::Scanner> const& _scanner, bool _reuseScanner);
+	std::unique_ptr<Block> parse(std::shared_ptr<langutil::Scanner> const& _scanner, bool _reuseScanner);
 
 protected:
 	using ElementaryOperation = boost::variant<Instruction, Literal, Identifier>;
